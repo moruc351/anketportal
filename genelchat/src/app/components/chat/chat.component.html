@@ -1,0 +1,28 @@
+<h1 class="chatTitle"> Toplu Mesaj</h1>
+<hr class="chatHR">
+<div class="app-messages" id="app-messages">
+    <div *ngFor="let item of chatService.chats" class="messageDiv"
+        [ngClass]="{'text-end': item.uid === chatService.user.uid}">
+        <span class="badge"
+            [ngClass]="{'bagde-other': item.uid !== chatService.user.uid, 'bagde-me': item.uid === chatService.user.uid}">{{item.name}}</span>
+        <p>
+            {{item.message}}
+        </p>
+    </div>
+    <!-- <div class="text-end">
+        <span class="badge bg-primary">Saul</span>
+        <p>
+            Message 02
+        </p>
+    </div>
+    <div>
+        <span class="badge bg-success">Josue</span>
+        <p>
+            Message 02
+        </p>
+    </div> -->
+
+</div>
+
+<input type="text" name="message" [(ngModel)]="message" (keyup.enter)="sendMessage()" placeholder="Mesaj gönder"
+    class="form-control">
